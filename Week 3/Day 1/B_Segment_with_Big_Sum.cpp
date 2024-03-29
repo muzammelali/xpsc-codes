@@ -15,7 +15,7 @@ int main(){
     }
 
     long long sum = 0;
-    int l = 0, r = 0, ans = 0;
+    int l = 0, r = 0, ans = INT_MAX;
 
     while (r < n)
     {
@@ -23,20 +23,14 @@ int main(){
         
         while (sum >= s)
         {
-            if (ans == 0)
-            {
-                ans = r - l + 1;
-            }
-            else
-            {
-                ans = min(ans, r - l + 1);
-            }
+            ans = min(ans, r - l + 1);            
             sum -= arr[l];
             l++;
         }
         r++;
     }
 
-    cout << ans << endl;
+    if(ans != INT_MAX ) cout << ans << endl;
+    else cout << -1 << endl;
     return 0;
 }
